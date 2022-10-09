@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E0287D928F2460100413F95 /* bedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0287D828F2460100413F95 /* bedApp.swift */; };
+		1E0287D928F2460100413F95 /* nextApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0287D828F2460100413F95 /* nextApp.swift */; };
 		1E0287DB28F2460100413F95 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0287DA28F2460100413F95 /* ContentView.swift */; };
 		1E0287DD28F2460200413F95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E0287DC28F2460200413F95 /* Assets.xcassets */; };
 		1E0287E128F2460200413F95 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E0287E028F2460200413F95 /* Preview Assets.xcassets */; };
+		1EBA342528F304F200DF41EE /* StorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBA342428F304F200DF41EE /* StorageHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E0287D528F2460100413F95 /* bed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bed.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1E0287D828F2460100413F95 /* bedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bedApp.swift; sourceTree = "<group>"; };
+		1E0287D528F2460100413F95 /* next.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = next.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E0287D828F2460100413F95 /* nextApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nextApp.swift; sourceTree = "<group>"; };
 		1E0287DA28F2460100413F95 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1E0287DC28F2460200413F95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1E0287DE28F2460200413F95 /* bed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bed.entitlements; sourceTree = "<group>"; };
+		1E0287DE28F2460200413F95 /* next.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = next.entitlements; sourceTree = "<group>"; };
 		1E0287E028F2460200413F95 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1EBA342428F304F200DF41EE /* StorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,7 +38,7 @@
 		1E0287CC28F2460100413F95 = {
 			isa = PBXGroup;
 			children = (
-				1E0287D728F2460100413F95 /* bed */,
+				1E0287D728F2460100413F95 /* next */,
 				1E0287D628F2460100413F95 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -44,21 +46,22 @@
 		1E0287D628F2460100413F95 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1E0287D528F2460100413F95 /* bed.app */,
+				1E0287D528F2460100413F95 /* next.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1E0287D728F2460100413F95 /* bed */ = {
+		1E0287D728F2460100413F95 /* next */ = {
 			isa = PBXGroup;
 			children = (
-				1E0287D828F2460100413F95 /* bedApp.swift */,
+				1E0287D828F2460100413F95 /* nextApp.swift */,
 				1E0287DA28F2460100413F95 /* ContentView.swift */,
+				1EBA342428F304F200DF41EE /* StorageHelper.swift */,
 				1E0287DC28F2460200413F95 /* Assets.xcassets */,
-				1E0287DE28F2460200413F95 /* bed.entitlements */,
+				1E0287DE28F2460200413F95 /* next.entitlements */,
 				1E0287DF28F2460200413F95 /* Preview Content */,
 			);
-			path = bed;
+			path = next;
 			sourceTree = "<group>";
 		};
 		1E0287DF28F2460200413F95 /* Preview Content */ = {
@@ -72,9 +75,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1E0287D428F2460100413F95 /* bed */ = {
+		1E0287D428F2460100413F95 /* next */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1E0287E428F2460200413F95 /* Build configuration list for PBXNativeTarget "bed" */;
+			buildConfigurationList = 1E0287E428F2460200413F95 /* Build configuration list for PBXNativeTarget "next" */;
 			buildPhases = (
 				1E0287D128F2460100413F95 /* Sources */,
 				1E0287D228F2460100413F95 /* Frameworks */,
@@ -84,9 +87,9 @@
 			);
 			dependencies = (
 			);
-			name = bed;
+			name = next;
 			productName = bed;
-			productReference = 1E0287D528F2460100413F95 /* bed.app */;
+			productReference = 1E0287D528F2460100413F95 /* next.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -104,7 +107,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1E0287D028F2460100413F95 /* Build configuration list for PBXProject "bed" */;
+			buildConfigurationList = 1E0287D028F2460100413F95 /* Build configuration list for PBXProject "next" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -117,7 +120,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1E0287D428F2460100413F95 /* bed */,
+				1E0287D428F2460100413F95 /* next */,
 			);
 		};
 /* End PBXProject section */
@@ -140,7 +143,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E0287DB28F2460100413F95 /* ContentView.swift in Sources */,
-				1E0287D928F2460100413F95 /* bedApp.swift in Sources */,
+				1E0287D928F2460100413F95 /* nextApp.swift in Sources */,
+				1EBA342528F304F200DF41EE /* StorageHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,10 +265,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = bed/bed.entitlements;
+				CODE_SIGN_ENTITLEMENTS = /Users/4/main/code/next/next/next.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"bed/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"next/Preview Content\"";
 				DEVELOPMENT_TEAM = A44UN86BN6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -284,8 +289,9 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = chris.bed;
+				PRODUCT_BUNDLE_IDENTIFIER = chris.next;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -299,10 +305,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = bed/bed.entitlements;
+				CODE_SIGN_ENTITLEMENTS = /Users/4/main/code/next/next/next.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"bed/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"next/Preview Content\"";
 				DEVELOPMENT_TEAM = A44UN86BN6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -322,8 +329,9 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = chris.bed;
+				PRODUCT_BUNDLE_IDENTIFIER = chris.next;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -335,7 +343,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1E0287D028F2460100413F95 /* Build configuration list for PBXProject "bed" */ = {
+		1E0287D028F2460100413F95 /* Build configuration list for PBXProject "next" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1E0287E228F2460200413F95 /* Debug */,
@@ -344,7 +352,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1E0287E428F2460200413F95 /* Build configuration list for PBXNativeTarget "bed" */ = {
+		1E0287E428F2460200413F95 /* Build configuration list for PBXNativeTarget "next" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1E0287E528F2460200413F95 /* Debug */,
