@@ -1,6 +1,6 @@
 //
-//  bedApp.swift
-//  bed
+//  nextApp.swift
+//  next
 //
 //  Created by Chris McElroy on 10/9/22.
 //

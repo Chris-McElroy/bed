@@ -11,6 +11,7 @@
 		1E0287DB28F2460100413F95 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0287DA28F2460100413F95 /* ContentView.swift */; };
 		1E0287DD28F2460200413F95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E0287DC28F2460200413F95 /* Assets.xcassets */; };
 		1E0287E128F2460200413F95 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E0287E028F2460200413F95 /* Preview Assets.xcassets */; };
+		1E90285B28F551F6000F374E /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90285A28F551F6000F374E /* Status.swift */; };
 		1EBA342528F304F200DF41EE /* StorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBA342428F304F200DF41EE /* StorageHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +22,7 @@
 		1E0287DC28F2460200413F95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E0287DE28F2460200413F95 /* next.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = next.entitlements; sourceTree = "<group>"; };
 		1E0287E028F2460200413F95 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1E90285A28F551F6000F374E /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		1EBA342428F304F200DF41EE /* StorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,6 +58,7 @@
 			children = (
 				1E0287D828F2460100413F95 /* nextApp.swift */,
 				1E0287DA28F2460100413F95 /* ContentView.swift */,
+				1E90285A28F551F6000F374E /* Status.swift */,
 				1EBA342428F304F200DF41EE /* StorageHelper.swift */,
 				1E0287DC28F2460200413F95 /* Assets.xcassets */,
 				1E0287DE28F2460200413F95 /* next.entitlements */,
@@ -145,6 +148,7 @@
 				1E0287DB28F2460100413F95 /* ContentView.swift in Sources */,
 				1E0287D928F2460100413F95 /* nextApp.swift in Sources */,
 				1EBA342528F304F200DF41EE /* StorageHelper.swift in Sources */,
+				1E90285B28F551F6000F374E /* Status.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
