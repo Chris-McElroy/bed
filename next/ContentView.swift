@@ -6,21 +6,25 @@
 //
 
 import SwiftUI
+import ActivityKit
 
 enum Mode: Int {
 	case pre, night, sleep, morning
 }
 
+
+
 struct ContentView: View {
-	@State var nightTime: Int = 0
-	@State var sleepTime: Int = 0
-	@State var morningTime: Int = 0
-	@State var startTime: Int = 0
-	@State var wakeTime: Int = 0
+	@State var nightTime: Int = Storage.int(.night)
+	@State var sleepTime: Int = Storage.int(.sleep)
+	@State var morningTime: Int = Storage.int(.morning)
+	@State var startTime: Int = Storage.int(.start)
+	@State var nightStartTime: Int = Storage.int(.nightStart)
+	@State var sleepStartTime: Int = Storage.int(.sleepStart)
+	@State var morningStartTime: Int = Storage.int(.morningStart)
+	@State var morningEndTime: Int = Storage.int(.morningEnd)
 	@State var timer: Timer? = nil
-	@State var mode: Mode = .pre
-	
-	// TODO save this shit so even if it gets rebooted i don't lose it
+	@State var mode: Mode = Mode(rawValue: Storage.int(.mode)) ?? .pre
 	
 	var body: some View {
 		VStack {
@@ -43,14 +47,26 @@ struct ContentView: View {
 //			}
 			// TODO add an undo button up here
 			Spacer()
-			Text(String(format: "%01d.%02d", nightTime/3600, (nightTime*100)/3600 % 100))
-				.font(.system(size: mode == .night ? 100 : 50))
-			Text(String(format: "%01d.%02d", sleepTime/3600, (sleepTime*100)/3600 % 100))
-				.font(.system(size: mode == .sleep ? 100 : 50))
-			Text(String(format: "%01d.%02d", wakeTime/3600, (wakeTime*100)/3600 % 100))
-				.font(.system(size: 50))
-			Text(String(format: "%01d.%02d", morningTime/3600, (morningTime*100)/3600 % 100))
-				.font(.system(size: mode == .morning ? 100 : 50))
+			VStack {
+				Text(getStringFromTime(nightStartTime))
+					.font(.system(size: 40))
+					.foregroundColor(.secondary)
+				Text(getStringFromTime(nightTime))
+					.font(.system(size: mode == .night ? 100 : 50))
+				Text(getStringFromTime(sleepStartTime))
+					.font(.system(size: 40))
+					.foregroundColor(.secondary)
+				Text(getStringFromTime(sleepTime))
+					.font(.system(size: mode == .sleep ? 100 : 50))
+				Text(getStringFromTime(morningStartTime))
+					.font(.system(size: 40))
+					.foregroundColor(.secondary)
+				Text(getStringFromTime(morningTime))
+					.font(.system(size: mode == .morning ? 100 : 50))
+				Text(getStringFromTime(morningEndTime))
+					.font(.system(size: 40))
+					.foregroundColor(.secondary)
+			}
 			Spacer()
 			
 			Button("next mode") {
@@ -58,17 +74,26 @@ struct ContentView: View {
 				case .pre:
 					reset()
 					startTimer()
+					setNightStartTime()
 					setMode(.night)
 				case .night:
+					setSleepStartTime()
 					setMode(.sleep)
 				case .sleep:
-					setWakeTime(-Int(Calendar.current.startOfDay(for: Date()).timeIntervalSinceNow))
+					setMorningStartTime()
 					setMode(.morning)
 				case .morning:
+					setMorningEndTime()
 					stopTimer()
 					setMode(.pre)
 				}
 				setStartTime(Date.s)
+				Task {
+					await LiveActivityManager.endAllActivities()
+					if mode != .pre {
+						LiveActivityManager.startActivity(with: startTime)
+					}
+				}
 			}
 			Spacer().frame(height: 150)
 		}
@@ -81,24 +106,43 @@ struct ContentView: View {
 	}
 	
 	func reloadValues() {
-		nightTime = Storage.int(.night)
-		sleepTime = Storage.int(.sleep)
-		wakeTime = Storage.int(.wake)
-		morningTime = Storage.int(.morning)
-		startTime = Storage.int(.start)
-		mode = Mode(rawValue: Storage.int(.mode)) ?? .pre
 		startTimer()
+		if mode != .pre	{
+			Task {
+				await LiveActivityManager.endAllActivities()
+				LiveActivityManager.startActivity(with: startTime)
+			}
+		}
 	}
 	
 	func reset() {
 		timer?.invalidate()
 		timer = nil
+		setNightStartTime(0)
 		setNightTime(0)
+		setSleepStartTime(0)
 		setSleepTime(0)
-		setWakeTime(0)
+		setMorningStartTime(0)
 		setMorningTime(0)
+		setMorningEndTime(0)
 		setStartTime(0)
 		setMode(.pre)
+		Task {
+			await LiveActivityManager.endAllActivities()
+		}
+	}
+	
+	func getStringFromTime(_ t: Int) -> String {
+		let hours = t/3600
+		let min = (t/60) % 60
+		let sec = t % 60
+		
+		return (hours != 0 ? "\(hours)." : "") + (hours != 0 || min != 0 ? "\(min)." : "") + "\(sec)"
+	}
+	
+	func setNightStartTime(_ v: Int = -Int(Calendar.current.startOfDay(for: Date()).timeIntervalSinceNow)) {
+		nightStartTime = v
+		Storage.set(v, for: .nightStart)
 	}
 	
 	func setNightTime(_ v: Int) {
@@ -106,19 +150,29 @@ struct ContentView: View {
 		Storage.set(v, for: .night)
 	}
 	
+	func setSleepStartTime(_ v: Int = -Int(Calendar.current.startOfDay(for: Date()).timeIntervalSinceNow)) {
+		sleepStartTime = v
+		Storage.set(v, for: .sleepStart)
+	}
+	
 	func setSleepTime(_ v: Int) {
 		sleepTime = v
 		Storage.set(v, for: .sleep)
 	}
 	
-	func setWakeTime(_ v: Int) {
-		wakeTime = v
-		Storage.set(v, for: .wake)
+	func setMorningStartTime(_ v: Int = -Int(Calendar.current.startOfDay(for: Date()).timeIntervalSinceNow)) {
+		morningStartTime = v
+		Storage.set(v, for: .morningStart)
 	}
 	
 	func setMorningTime(_ v: Int) {
 		morningTime = v
 		Storage.set(v, for: .morning)
+	}
+	
+	func setMorningEndTime(_ v: Int = -Int(Calendar.current.startOfDay(for: Date()).timeIntervalSinceNow)) {
+		morningEndTime = v
+		Storage.set(v, for: .morningEnd)
 	}
 	
 	func setStartTime(_ v: Int) {
@@ -151,11 +205,7 @@ struct ContentView: View {
 
 
 extension Date {
-	static var now: TimeInterval {
-		timeIntervalSinceReferenceDate
-	}
-	
 	static var s: Int {
-		Int(now)
+		Int(timeIntervalSinceReferenceDate)
 	}
 }

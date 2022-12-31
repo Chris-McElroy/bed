@@ -28,7 +28,10 @@ class Storage {
 enum Key: String {
 	case night = "night"
 	case sleep = "sleep"
-	case wake = "wake"
+	case nightStart = "nightStart"
+	case sleepStart = "sleepStart"
+	case morningStart = "morningStart"
+	case morningEnd = "morningEnd"
 	case morning = "morning"
 	case start = "start"
 	case mode = "mode"
