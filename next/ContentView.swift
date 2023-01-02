@@ -29,6 +29,14 @@ struct ContentView: View {
 	var body: some View {
 		VStack {
 			Spacer().frame(height: 100)
+			Button("copy") {
+				let wake = getCopyString(morningStartTime)
+				let night = getCopyString(nightTime)
+				let sleep = getCopyString(sleepTime)
+				let morn = getCopyString(morningTime)
+				UIPasteboard.general.string = wake + "\t" + night + "\t" + sleep + "\t" + morn
+				UINotificationFeedbackGenerator().notificationOccurred(.success)
+			}
 //			Button("start/stop") {
 //				if timer == nil {
 //					startTimer()
@@ -135,9 +143,15 @@ struct ContentView: View {
 	func getStringFromTime(_ t: Int) -> String {
 		let hours = t/3600
 		let min = (t/60) % 60
-		let sec = t % 60
 		
-		return (hours != 0 ? "\(hours)." : "") + (hours != 0 || min != 0 ? "\(min)." : "") + "\(sec)"
+		return (hours != 0 ? "\(hours)." : "") + "\(min)"
+	}
+	
+	func getCopyString(_ t: Int) -> String {
+		let hours = String(t/3600) + ":"
+		let min = String(format: "%02d", (t/60) % 60)
+		
+		return hours + min
 	}
 	
 	func setNightStartTime(_ v: Int = -Int(Calendar.current.startOfDay(for: Date()).timeIntervalSinceNow)) {
