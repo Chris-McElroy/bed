@@ -9,17 +9,19 @@ import SwiftUI
 import ActivityKit
 
 enum Mode: Int {
-	case pre, night, sleep, morning
+	case pre, night, relax, sleep, morning
 }
 
 
 
 struct ContentView: View {
 	@State var nightTime: Int = Storage.int(.night)
+	@State var relaxTime: Int = Storage.int(.relax)
 	@State var sleepTime: Int = Storage.int(.sleep)
 	@State var morningTime: Int = Storage.int(.morning)
 	@State var startTime: Int = Storage.int(.start)
 	@State var nightStartTime: Int = Storage.int(.nightStart)
+	@State var relaxStartTime: Int = Storage.int(.relaxStart)
 	@State var sleepStartTime: Int = Storage.int(.sleepStart)
 	@State var morningStartTime: Int = Storage.int(.morningStart)
 	@State var morningEndTime: Int = Storage.int(.morningEnd)
@@ -61,6 +63,11 @@ struct ContentView: View {
 					.foregroundColor(.secondary)
 				Text(getStringFromTime(nightTime))
 					.font(.system(size: mode == .night ? 100 : 50))
+				Text(getStringFromTime(relaxStartTime))
+					.font(.system(size: 40))
+					.foregroundColor(.secondary)
+				Text(getStringFromTime(relaxTime))
+					.font(.system(size: mode == .relax ? 100 : 50))
 				Text(getStringFromTime(sleepStartTime))
 					.font(.system(size: 40))
 					.foregroundColor(.secondary)
@@ -85,6 +92,9 @@ struct ContentView: View {
 					setNightStartTime()
 					setMode(.night)
 				case .night:
+					setRelaxStartTime()
+					setMode(.relax)
+				case .relax:
 					setSleepStartTime()
 					setMode(.sleep)
 				case .sleep:
@@ -164,6 +174,16 @@ struct ContentView: View {
 		Storage.set(v, for: .night)
 	}
 	
+	func setRelaxStartTime(_ v: Int = -Int(Calendar.current.startOfDay(for: Date()).timeIntervalSinceNow)) {
+		relaxStartTime = v
+		Storage.set(v, for: .relaxStart)
+	}
+	
+	func setRelaxTime(_ v: Int) {
+		relaxTime = v
+		Storage.set(v, for: .relax)
+	}
+	
 	func setSleepStartTime(_ v: Int = -Int(Calendar.current.startOfDay(for: Date()).timeIntervalSinceNow)) {
 		sleepStartTime = v
 		Storage.set(v, for: .sleepStart)
@@ -205,6 +225,7 @@ struct ContentView: View {
 			switch mode {
 			case .pre: break
 			case .night: setNightTime(Date.s - startTime)
+			case .relax: setRelaxTime(Date.s - startTime)
 			case .sleep: setSleepTime(Date.s - startTime)
 			case .morning: setMorningTime(Date.s - startTime)
 			}
